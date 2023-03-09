@@ -5,11 +5,8 @@ Map service();
 
 int main() {
     Map map = service();
-    Map map2 = map;
-    map2.result();
-    map2.start();
+    map.start();
     map.result();
-    map2.result();
     return 0;
 }
 
@@ -29,14 +26,17 @@ Map service(){
             std::cin >> x1;
             std::cin >> y2;
             std::cin >> x2;
-            map.createWall(x1,y1,x2,y2);
+            if(x1 < 0 || y1 < 0 || x2 < 0 || y2 < 0) std::cout << "Wrong valuse" << std::endl;
+            else if(x1 >= height || x2 >= height || y1 >= width || y2 >= width ) std::cout << "Wrong valuse" << std::endl;
+            else map.createWall(x1,y1,x2,y2);
         }
         if(option == 's'){
             std::cin >> y1;
             std::cin >> x1;
-            map.setStart(x1,y1);
+            if(x1 < 0 || y1 < 0) std::cout << "Wrong valuse" << std::endl;
+            else if(x1 >= height || y1 >= width) std::cout << "Wrong valuse" << std::endl;
+            else map.setStart(x1,y1);
         }
     }
-
     return map;
 }

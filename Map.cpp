@@ -4,7 +4,7 @@
 #include "Map.h"
 
 Map::Map() {
-    std::cout <<"KD Map" << std::endl;
+    //std::cout <<"KD Map" << std::endl;
     _height = 7;
     _width = 9;
     _startX = 4;
@@ -18,7 +18,7 @@ Map::Map() {
 }
 
 Map::Map(int aheight, int awidth) {
-    std::cout <<"K Map" << std::endl;
+    //std::cout <<"K Map" << std::endl;
     _height = aheight;
     _width = awidth;
     _startX = 0;
@@ -31,12 +31,12 @@ Map::Map(int aheight, int awidth) {
 }
 
 Map::~Map() {
-    std::cout <<"D Map" << std::endl;
+    //std::cout <<"D Map" << std::endl;
     delocMap();
 }
 
 Map::Map(const Map &other) {
-    std::cout <<"KK Map" << std::endl;
+    //std::cout <<"KK Map" << std::endl;
     _startX = other._startX;
     _startY = other._startY;
     _width = other._width;
@@ -47,7 +47,7 @@ Map::Map(const Map &other) {
 }
 
 Map& Map::operator=(const Map &rhs) {
-    std::cout <<"OK Map" << std::endl;
+    //std::cout <<"OK Map" << std::endl;
     _startX = rhs._startX;
     _startY = rhs._startY;
     if(_map != nullptr) delocMap();
@@ -147,7 +147,7 @@ void Map::copyMap(const Map &other) {
 }
 
 void Map::delocMap() {
-    std::cout << "DELOKACJA" << std::endl;
+    //std::cout << "DELOKACJA" << std::endl;
     for(int i = 0; i < _height; i++){
         delete [] _map[i];
     }
