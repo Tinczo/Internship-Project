@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Map.h"
+
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Map map;
+    map.print();
     return 0;
 }

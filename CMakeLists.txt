@@ -3,4 +3,4 @@ project(InternshipProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(InternshipProject main.cpp)
+add_executable(InternshipProject main.cpp Map.cpp Map.h)
