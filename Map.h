@@ -13,13 +13,17 @@ public:
     Map();
     ~Map();
     void print();
+    void start();
+    void result();
+    int getSand();
 
 private:
-    char** _map;
+    char** _map; // można by było użyć inteligentych wskaźników albo wektorów ale chcialem pokazac że wiem co to lokowanie dynamiczne ;)
     int _startX;
     int _startY;
     int _width;
     int _height;
+    int _sand;
 
 };
 

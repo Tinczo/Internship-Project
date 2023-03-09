@@ -6,10 +6,11 @@
 #include "Map.h"
 
 Map::Map() {
-    _width = 9;
     _height = 7;
+    _width = 9;
     _startX = 4;
     _startY = 4;
+    _sand = 0;
     _map = new char*[_height];
 
 
@@ -42,4 +43,39 @@ Map::~Map() {
         delete [] _map[i];
     }
     delete [] _map;
+}
+
+void Map::start() {
+    bool work = true;
+    bool falls = true;
+    int x = _startX;
+    int y = _startY;
+    while (work){
+        falls = true;
+        x = _startX, y = _startY;
+        while(falls){
+            if(x <= 0 || y <= 0 || y >= _width-1) falls = false;
+            else if(_map[x-1][y] == '.')  x = x-1;
+            else if(_map[x-1][y+1] == '.') x = x-1, y = y+1;
+            else if(_map[x-1][y-1] == '.') x = x-1, y = y-1;
+            else falls = false;
+        }
+        if(x == _startX && y == _startY) work = false;
+        else  if(x <= 0 || y <= 0 || y >= _width-1) work = false;
+        else {
+            _map[x][y] = 'o';
+            _sand++;
+        }
+        //print();
+        //std::cout << std::endl;
+    }
+}
+
+int Map::getSand() {
+    return _sand;
+}
+
+void Map::result() {
+    print();
+    std::cout << "Ziarenka: " << _sand << std::endl;
 }

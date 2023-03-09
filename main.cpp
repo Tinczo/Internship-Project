@@ -5,5 +5,7 @@
 int main() {
     Map map;
     map.print();
+    map.start();
+    map.result();
     return 0;
 }
