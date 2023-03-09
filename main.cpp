@@ -5,8 +5,11 @@ Map service();
 
 int main() {
     Map map = service();
-    map.start();
+    Map map2 = map;
+    map2.result();
+    map2.start();
     map.result();
+    map2.result();
     return 0;
 }
 
@@ -14,9 +17,11 @@ Map service(){
     int height, width;
     int x1, y1, x2, y2;
     char option = 'w';
+
     std::cin >> width;
     std::cin >> height;
     Map map(height, width);
+
     while (option != 's'){
         std::cin >> option;
         if(option == 'r'){
@@ -32,5 +37,6 @@ Map service(){
             map.setStart(x1,y1);
         }
     }
+
     return map;
 }

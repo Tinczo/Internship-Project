@@ -4,6 +4,7 @@
 #include "Map.h"
 
 Map::Map() {
+    std::cout <<"KD Map" << std::endl;
     _height = 7;
     _width = 9;
     _startX = 4;
@@ -17,6 +18,7 @@ Map::Map() {
 }
 
 Map::Map(int aheight, int awidth) {
+    std::cout <<"K Map" << std::endl;
     _height = aheight;
     _width = awidth;
     _startX = 0;
@@ -28,14 +30,46 @@ Map::Map(int aheight, int awidth) {
     _map[_startX][_startY] = '+';
 }
 
+Map::~Map() {
+    std::cout <<"D Map" << std::endl;
+    delocMap();
+}
+
+Map::Map(const Map &other) {
+    std::cout <<"KK Map" << std::endl;
+    _startX = other._startX;
+    _startY = other._startY;
+    _width = other._width;
+    _height = other._height;
+    _sand = other._sand;
+    createMap(_height, _width);
+    copyMap(other);
+}
+
+Map& Map::operator=(const Map &rhs) {
+    std::cout <<"OK Map" << std::endl;
+    _startX = rhs._startX;
+    _startY = rhs._startY;
+    if(_map != nullptr) delocMap();
+
+    _width = rhs._width;
+    _height = rhs._height;
+    _sand = rhs._sand;
+    createMap(_height, _width);
+    copyMap(rhs);
+    return (*this);
+}
+
 void Map::createMap(int aheight, int awidth) {
     _map = new char*[_height];
+
     for(int i = 0; i < aheight; i++){
         _map[i] = new char[awidth];
         for(int j = 0; j < awidth; j++){
             _map[i][j] = '.';
         }
     }
+
 }
 
 void Map::print() {
@@ -45,13 +79,6 @@ void Map::print() {
         }
         std::cout << "\n";
     }
-}
-
-Map::~Map() {
-    for(int i = 0; i < _height; i++){
-        delete [] _map[i];
-    }
-    delete [] _map;
 }
 
 void Map::start() {
@@ -109,4 +136,20 @@ void Map::createWall(int ax1, int ay1, int ax2, int ay2) {
             _map[i][j] = '#';
         }
     }
+}
+
+void Map::copyMap(const Map &other) {
+    for(int i = 0; i < _height; i++){
+        for(int j = 0; j < _width; j++){
+            _map[i][j] = other._map[i][j];
+        }
+    }
+}
+
+void Map::delocMap() {
+    std::cout << "DELOKACJA" << std::endl;
+    for(int i = 0; i < _height; i++){
+        delete [] _map[i];
+    }
+    delete [] _map;
 }

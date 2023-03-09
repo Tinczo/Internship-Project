@@ -13,6 +13,8 @@ public:
     Map();
     Map(int aheight, int awidth);
     ~Map();
+    Map(const Map & other);
+    Map& operator=(const Map & rhs);
     void print();
     void start();
     void result();
@@ -29,6 +31,8 @@ private:
     int _sand;
 
     void createMap(int aheight, int awidth);
+    void copyMap(const Map & other);
+    void delocMap();
 };
 
 
